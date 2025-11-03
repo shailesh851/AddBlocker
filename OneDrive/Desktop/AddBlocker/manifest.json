@@ -1,0 +1,28 @@
+{
+    "manifest_version":3,
+    "name":"FirstExtension",
+    "version":"1.0",
+
+    "permissions":["declarativeNetRequest", "webRequest", "activeTab", "scripting"],
+
+    "action":{
+        "default_popup":"popup.html",
+        "default_icon":"chrome.png"
+    },
+
+    "content_scripts":[
+        {
+            "matches":["<all_urls>"],
+            "css":["content.css"],
+            "run_at": "document_start"
+        }
+    ],
+
+    "background":{
+        "service_worker":"background.js"
+    },
+    "options_page":"options.html",
+
+    "host_permissions":["<all_urls>"]
+
+}
