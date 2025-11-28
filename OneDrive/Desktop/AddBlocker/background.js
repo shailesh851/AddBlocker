@@ -1,11 +1,11 @@
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.declarativeNetRequest.updateDynamicRules({
-    removeRuleIds: Array.from({ length: 1000 }, (_, i) => i + 1), // clear old rules
+    removeRuleIds: Array.from({ length: 1000 }, (_, i) => i + 1),
 
     addRules: [
       // Generic ad patterns
-      { id: 1, priority: 1, action: { type: "block" }, condition: { urlFilter: "ads", resourceTypes: ["script","image","xmlhttprequest","sub_frame"] }},
+      //{ id: 1, priority: 1, action: { type: "block" }, condition: { urlFilter: "ads", resourceTypes: ["script","image","xmlhttprequest","sub_frame"] }}, this rules block youtube adds but also blocks videos 
       { id: 2, priority: 1, action: { type: "block" }, condition: { urlFilter: "adserver", resourceTypes: ["script","image","xmlhttprequest"] }},
       { id: 3, priority: 1, action: { type: "block" }, condition: { urlFilter: "banner", resourceTypes: ["image","script","xmlhttprequest","sub_frame"] }},
       { id: 4, priority: 1, action: { type: "block" }, condition: { urlFilter: "sponsor", resourceTypes: ["script","image","xmlhttprequest"] }},
@@ -18,14 +18,11 @@ chrome.runtime.onInstalled.addListener(() => {
 
       // Popups / Tracking
       { id: 9, priority: 1, action: { type: "block" }, condition: { urlFilter: "popads", resourceTypes: ["script","sub_frame"] }},
-      { id: 10, priority: 1, action: { type: "block" }, condition: { urlFilter: "tracking", resourceTypes: ["script","xmlhttprequest"] }},
 
       // Flash banners
       { id: 11, priority: 1, action: { type: "block" }, condition: { urlFilter: ".swf", resourceTypes: ["object","sub_frame"] }},
 
-      // Video ads
-      { id: 12, priority: 1, action: { type: "block" }, condition: { urlFilter: "videoads", resourceTypes: ["media","xmlhttprequest"] }},
-      { id: 13, priority: 1, action: { type: "block" }, condition: { urlFilter: "ads/video", resourceTypes: ["media","xmlhttprequest"] }},
+  
 
       // Yandex
       { id: 14, priority: 1, action: { type: "block" }, condition: { urlFilter: "an.yandex.ru", resourceTypes: ["script","image","xmlhttprequest","sub_frame"] }},
@@ -80,3 +77,7 @@ chrome.runtime.onInstalled.addListener(() => {
     ]
   });
 });
+
+
+
+
